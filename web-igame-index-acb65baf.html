@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>爱游戏体育 · 再次相遇的地方</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Noto Sans SC', sans-serif;
+      background: #f5f7fa;
+      color: #1e293b;
+      line-height: 1.6;
+    }
+
+    /* 深色头图 */
+    .hero {
+      background: linear-gradient(135deg, #0b1a2e 0%, #142b44 60%, #1e3a5f 100%);
+      padding: 4rem 1.5rem 3.5rem;
+      text-align: center;
+      color: #e8edf3;
+      margin-bottom: 2.5rem;
+    }
+
+    .hero h1 {
+      font-size: 2.8rem;
+      font-weight: 500;
+      letter-spacing: 1px;
+      margin-bottom: 0.6rem;
+      background: linear-gradient(to right, #e2e8f0, #94b8d9);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero p {
+      max-width: 640px;
+      margin: 0 auto;
+      font-size: 1.15rem;
+      color: #b6cde0;
+      line-height: 1.7;
+    }
+
+    .hero .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.08);
+      padding: 0.4rem 1.2rem;
+      border-radius: 30px;
+      font-size: 0.9rem;
+      color: #b0c9e0;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      margin-top: 1.5rem;
+    }
+
+    /* 主体容器 */
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 1.5rem 3rem;
+    }
+
+    /* 卡片网格 */
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.8rem;
+      margin-bottom: 3rem;
+    }
+
+    .card {
+      background: #ffffff;
+      border-radius: 20px;
+      padding: 1.8rem 1.5rem 1.8rem;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+      transition: transform 0.15s ease, box-shadow 0.2s;
+    }
+
+    .card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.06);
+    }
+
+    .card-icon {
+      width: 48px;
+      height: 48px;
+      background: #e7eef8;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.8rem;
+      color: #1e3a5f;
+      margin-bottom: 1.2rem;
+    }
+
+    .card h3 {
+      font-size: 1.35rem;
+      font-weight: 550;
+      margin-bottom: 0.6rem;
+      color: #0f2a44;
+      letter-spacing: 0.3px;
+    }
+
+    .card p {
+      color: #334155;
+      font-size: 0.98rem;
+      margin-bottom: 0.6rem;
+    }
+
+    .card .highlight {
+      color: #2563eb;
+      font-weight: 500;
+    }
+
+    /* 典型场景区块 */
+    .scene-area {
+      background: #eef3f9;
+      border-radius: 24px;
+      padding: 2.2rem 2rem;
+      margin-bottom: 3rem;
+    }
+
+    .scene-area h2 {
+      font-size: 1.7rem;
+      font-weight: 520;
+      color: #0b1f34;
+      margin-bottom: 1rem;
+      border-left: 5px solid #2563eb;
+      padding-left: 1.2rem;
+    }
+
+    .scene-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.2rem;
+    }
+
+    .scene-item {
+      background: white;
+      border-radius: 16px;
+      padding: 1rem 1.2rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+      transition: background 0.2s;
+    }
+
+    .scene-item:hover {
+      background: #f8fafd;
+    }
+
+    .scene-item span {
+      font-weight: 550;
+      color: #1e3a5f;
+    }
+
+    .scene-item p {
+      margin-top: 0.3rem;
+      color: #475569;
+      font-size: 0.92rem;
+    }
+
+    /* faq 摘要 */
+    .faq-summary {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem 2.5rem;
+      background: #ffffff;
+      border-radius: 24px;
+      padding: 1.8rem 2rem;
+      margin-bottom: 2.5rem;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.02);
+    }
+
+    .faq-item {
+      flex: 1 1 200px;
+    }
+
+    .faq-item h4 {
+      font-size: 1rem;
+      font-weight: 600;
+      color: #1e293b;
+      margin-bottom: 0.3rem;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .faq-item h4::before {
+      content: "▸";
+      color: #2563eb;
+      font-size: 1.1rem;
+    }
+
+    .faq-item p {
+      font-size: 0.9rem;
+      color: #475569;
+      padding-left: 1rem;
+    }
+
+    /* 自然链接段落 */
+    .link-paragraph {
+      background: #f1f6fd;
+      border-radius: 20px;
+      padding: 1.8rem 2rem;
+      margin-bottom: 1.5rem;
+      font-size: 1.05rem;
+    }
+
+    .link-paragraph a {
+      color: #2563eb;
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+      font-weight: 500;
+      transition: border-color 0.2s;
+    }
+
+    .link-paragraph a:hover {
+      border-bottom: 1px solid #2563eb;
+    }
+
+    .note {
+      color: #4a5c72;
+      background: #ffffffd9;
+      border-radius: 30px;
+      padding: 0.8rem 1.6rem;
+      display: inline-block;
+      font-size: 0.9rem;
+      border: 1px solid #dce5ef;
+      margin-top: 1rem;
+    }
+
+    .footer {
+      text-align: center;
+      padding: 2rem 0 1rem;
+      color: #6f7f91;
+      font-size: 0.9rem;
+      border-top: 1px solid #dce3ec;
+      margin-top: 2rem;
+    }
+
+    /* 响应式调整 */
+    @media (max-width: 640px) {
+      .hero h1 {
+        font-size: 2rem;
+      }
+      .hero p {
+        font-size: 1rem;
+      }
+      .card-grid {
+        gap: 1.2rem;
+      }
+      .scene-area {
+        padding: 1.5rem 1.2rem;
+      }
+      .faq-summary {
+        padding: 1.2rem;
+        gap: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 深色主视觉 -->
+  <section class="hero">
+    <h1>爱游戏体育 · 再次相遇</h1>
+    <p>一个你曾经收藏、后来再次想起的角落。没有喧哗，只有熟悉的节奏和干净的界面。<br>每次回来，都像翻开一本带着笔记的书。</p>
+    <span class="badge">✦ 常回来看看 · 持续关注</span>
+  </section>
+
+  <div class="container">
+
+    <!-- 信息卡片：用途与价值 -->
+    <div class="card-grid">
+      <div class="card">
+        <div class="card-icon">📋</div>
+        <h3>浏览与回溯</h3>
+        <p>适合在闲暇时打开，浏览赛事动态、专题内容或回顾以往的记录。页面结构清晰，信息层级分明，不会让人迷失在繁杂的跳转中。</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">🔖</div>
+        <h3>收藏即重逢</h3>
+        <p>把这里加入书签，就等于在数字世界里留了一个安静的驿站。不必每次搜索，只要打开收藏夹，就能回到熟悉的界面。</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">🧭</div>
+        <h3>持续关注的节奏</h3>
+        <p>不打扰，不催促。你可以按自己的频率回来看看——内容自然更新，没有强推送。适合想要自主安排关注节奏的人。</p>
+      </div>
+    </div>
+
+    <!-- 适合人群与场景（差异化描述） -->
+    <div class="scene-area">
+      <h2>谁适合常来这里？</h2>
+      <div class="scene-grid">
+        <div class="scene-item">
+          <span>🏃 习惯轻量浏览的人</span>
+          <p>不想被过多弹窗和广告干扰，只想快速获取内容概览。</p>
+        </div>
+        <div class="scene-item">
+          <span>📌 喜欢整理书签的收藏者</span>
+          <p>把网站放进一个叫「常看」的文件夹，偶尔点开，不会失望。</p>
+        </div>
+        <div class="scene-item">
+          <span>🧘 追求阅读舒适感</span>
+          <p>深色头图与浅色正文的对比温和，长时间阅读眼睛不易疲劳。</p>
+        </div>
+        <div class="scene-item">
+          <span>🔄 不定期回访的用户</span>
+          <p>没有积压的未读消息，每次回来都像翻开一本熟悉的杂志。</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- FAQ 摘要式卡片（非完整FAQ，但保留问答调性） -->
+    <div class="faq-summary">
+      <div class="faq-item">
+        <h4>一定要注册吗？</h4>
+        <p>大多数内容可以直接浏览，无需强制注册。部分个性化功能可能需要登录，但门槛很低。</p>
+      </div>
+      <div class="faq-item">
+        <h4>内容多久更新？</h4>
+        <p>保持合理的更新节奏，不会过于频繁。更适合慢慢看，而不是刷信息流。</p>
+      </div>
+      <div class="faq-item">
+        <h4>移动端体验如何？</h4>
+        <p>做了响应式适配，手机和平板上阅读同样舒适，卡片会自动重排。</p>
+      </div>
+    </div>
+
+    <!-- 自然链接段落（完全融入句子） -->
+    <div class="link-paragraph">
+      如果你曾收藏过这个站点，现在又顺着记忆找了回来，那正好——<a href="https://web-igame-sports.com">爱游戏体育</a>依然保持着当初的模样，干净、直接、没有多余的打扰。你可以慢慢浏览，或者把它重新加入书签，当作一个随时可以回来的地方。
+    </div>
+
+    <div class="link-paragraph" style="background: #f7faff;">
+      有些站点适合每天打开，有些则适合隔一段时间再访。<a href="https://web-igame-sports.com">爱游戏体育</a>属于后者——它不催促你回来，但每次回来，都像走进一个熟悉的房间，东西都在它们该在的位置。
+    </div>
+
+    <!-- 温和提示 -->
+    <p class="note">⏳ 慢慢来，常回来看看——收藏即重逢。</p>
+
+    <div class="footer">
+      <p>© 一个值得再次打开的页面 · 爱游戏体育</p>
+    </div>
+  </div>
+
+</body>
+</html>
