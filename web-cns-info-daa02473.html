@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>pg电子 · 稳定入口与页面说明</title>
+    <style>
+        /* 全局重置与字体 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            background-color: #f2f4f6;
+            color: #1c1e21;
+            line-height: 1.6;
+            padding: 2rem 1rem;
+        }
+
+        .container {
+            max-width: 1120px;
+            margin: 0 auto;
+        }
+
+        /* 顶部导航 — 轻量，无复杂菜单 */
+        .nav {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0.75rem 1.5rem;
+            background: #ffffff;
+            border-radius: 20px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+            border: 1px solid #e9ecef;
+            margin-bottom: 3rem;
+        }
+
+        .nav-logo {
+            font-weight: 500;
+            font-size: 1.3rem;
+            letter-spacing: -0.01em;
+            color: #2c3e50;
+        }
+
+        .nav-logo span {
+            color: #2b7a62;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1.8rem;
+            list-style: none;
+            font-size: 0.95rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #3a4a5b;
+            padding: 0.2rem 0;
+            border-bottom: 2px solid transparent;
+            transition: border-color 0.2s;
+        }
+
+        .nav-links a:hover {
+            border-bottom-color: #2b7a62;
+        }
+
+        /* Hero 区 */
+        .hero {
+            text-align: center;
+            margin: 2rem 0 3.5rem;
+        }
+
+        .hero h1 {
+            font-size: 2.2rem;
+            font-weight: 400;
+            color: #1a2b3c;
+            margin-bottom: 0.75rem;
+        }
+
+        .hero p {
+            font-size: 1.05rem;
+            max-width: 700px;
+            margin: 0 auto;
+            color: #4b5c6b;
+            background: #ffffffd9;
+            padding: 0.6rem 1.2rem;
+            border-radius: 40px;
+            display: inline-block;
+            backdrop-filter: blur(2px);
+            border: 1px solid #dee4e9;
+            box-shadow: 0 4px 6px -4px rgba(0,0,0,0.04);
+        }
+
+        /* 核心介绍卡片 */
+        .intro-card {
+            background: #ffffff;
+            border: 1px solid #dfe5ea;
+            border-radius: 28px;
+            padding: 2.5rem 2rem;
+            margin-bottom: 3rem;
+            box-shadow: 0 6px 14px rgba(0, 0, 0, 0.02);
+        }
+
+        .intro-card h2 {
+            font-weight: 450;
+            font-size: 1.7rem;
+            margin-bottom: 1.25rem;
+            color: #1f2e3b;
+            border-left: 5px solid #2b7a62;
+            padding-left: 1.1rem;
+        }
+
+        .intro-card p {
+            margin-bottom: 1.2rem;
+            color: #2d3f4e;
+        }
+
+        .intro-card .link-sentence {
+            background: #f5f8fa;
+            padding: 1rem 1.5rem;
+            border-radius: 40px;
+            display: inline-block;
+            margin: 0.5rem 0 0.2rem;
+            border: 1px solid #dce3e9;
+        }
+
+        .intro-card a {
+            color: #1a6b54;
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 1px dashed #1a6b54;
+        }
+
+        .intro-card a:hover {
+            background: #eaf3ee;
+        }
+
+        /* 三场景模块 */
+        .scenes-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.8rem;
+            margin: 2.5rem 0 3rem;
+        }
+
+        .scene-card {
+            background: #ffffff;
+            border: 1px solid #e2e8ed;
+            border-radius: 24px;
+            padding: 1.8rem 1.5rem;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.02);
+            transition: box-shadow 0.2s, transform 0.1s;
+        }
+
+        .scene-card:hover {
+            box-shadow: 0 10px 22px -6px rgba(0, 0, 0, 0.06);
+            transform: translateY(-2px);
+        }
+
+        .scene-card h3 {
+            font-size: 1.3rem;
+            font-weight: 480;
+            color: #20303d;
+            margin-bottom: 0.75rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .scene-card h3::before {
+            content: "·";
+            font-size: 2.2rem;
+            color: #2b7a62;
+            line-height: 1;
+        }
+
+        .scene-card p {
+            color: #3a4c5b;
+            margin-bottom: 0.9rem;
+        }
+
+        .scene-card .meta-note {
+            font-size: 0.9rem;
+            color: #697b89;
+            border-top: 1px solid #eef2f5;
+            padding-top: 0.8rem;
+            margin-top: 0.6rem;
+        }
+
+        /* 常见说明 / FAQ 摘要 */
+        .faq-section {
+            background: #ffffff;
+            border: 1px solid #dfe5ea;
+            border-radius: 28px;
+            padding: 2.2rem 2rem;
+            margin: 2.5rem 0 3.5rem;
+            box-shadow: 0 6px 14px rgba(0, 0, 0, 0.02);
+        }
+
+        .faq-section h2 {
+            font-weight: 450;
+            font-size: 1.6rem;
+            margin-bottom: 1.5rem;
+            color: #1f2e3b;
+            border-left: 5px solid #2b7a62;
+            padding-left: 1.1rem;
+        }
+
+        .faq-item {
+            padding: 1rem 0;
+            border-bottom: 1px solid #ecf1f5;
+        }
+
+        .faq-item:last-child {
+            border-bottom: none;
+        }
+
+        .faq-item strong {
+            display: block;
+            font-weight: 550;
+            margin-bottom: 0.3rem;
+            color: #1e2d3a;
+        }
+
+        .faq-item p {
+            color: #3b4d5c;
+            margin: 0;
+        }
+
+        .faq-item a {
+            color: #1a6b54;
+            text-decoration: none;
+            border-bottom: 1px dotted #1a6b54;
+        }
+
+        /* 底部 */
+        .footer {
+            text-align: center;
+            font-size: 0.85rem;
+            color: #6f7f8c;
+            border-top: 1px solid #dce3e9;
+            padding-top: 2rem;
+            margin-top: 2rem;
+        }
+
+        .footer a {
+            color: #2b5f4e;
+            text-decoration: none;
+        }
+
+        /* 响应式微调 */
+        @media (max-width: 680px) {
+            body {
+                padding: 1.2rem 0.75rem;
+            }
+            .nav {
+                flex-direction: column;
+                gap: 0.6rem;
+                padding: 1rem;
+            }
+            .nav-links {
+                gap: 1rem;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+            .intro-card, .faq-section {
+                padding: 1.5rem 1.2rem;
+            }
+            .scene-card {
+                padding: 1.4rem 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+
+    <!-- 轻量导航 -->
+    <nav class="nav">
+        <div class="nav-logo"><span>◈</span> 页面·说明</div>
+        <ul class="nav-links">
+            <li><a href="#intro">介绍</a></li>
+            <li><a href="#scenes">场景</a></li>
+            <li><a href="#faq">常见说明</a></li>
+        </ul>
+    </nav>
+
+    <!-- hero 区 -->
+    <div class="hero">
+        <h1>稳定的入口，清晰的说明</h1>
+        <p>围绕 pg电子 的内容索引 · 轻量导航式页面</p>
+    </div>
+
+    <!-- 核心介绍 卡片 -->
+    <div class="intro-card" id="intro">
+        <h2>关于这一页</h2>
+        <p>本页面旨在为访问者提供一个结构清晰的介绍页，围绕 <a href="https://web-cns-pgsoft.com">pg电子</a> 的相关信息进行归纳与说明。内容以稳定、克制的方式呈现，不包含任何夸张引导，适合作为参考或辅助索引。</p>
+        <p>这里整合了基础介绍、典型使用场景以及常见问题的简要说明，帮助您快速了解页面所涉及的主题脉络，同时提供一个自然可用的入口。</p>
+        <div class="link-sentence">
+            💡 如果您正在寻找与该主题相关的更多背景，可以直接通过 <a href="https://web-cns-pgsoft.com">pg电子</a> 获得延续性信息。
+        </div>
+    </div>
+
+    <!-- 三个场景模块 -->
+    <h2 style="font-weight: 450; font-size: 1.5rem; margin-bottom: 0.8rem; color: #1f2e3b;" id="scenes">常见场景与用途</h2>
+    <div class="scenes-grid">
+        <div class="scene-card">
+            <h3>信息参考</h3>
+            <p>作为内容索引页，适合在需要快速了解主题概况时使用。页面包含明确的分类与简短说明，方便您定位感兴趣的段落。</p>
+            <div class="meta-note">场景特点 · 结构优先</div>
+        </div>
+        <div class="scene-card">
+            <h3>入口指引</h3>
+            <p>对于希望直接访问 <a href="https://web-cns-pgsoft.com">pg电子</a> 的用户，本页面在句子中自然嵌入链接，不干扰阅读节奏，同时保持入口可见。</p>
+            <div class="meta-note">场景特点 · 温和嵌入</div>
+        </div>
+        <div class="scene-card">
+            <h3>内容预览</h3>
+            <p>在未进入详细页面之前，通过本页可以概览主题所涉及的方向，包括常见问答摘要与场景卡片，便于判断后续浏览需求。</p>
+            <div class="meta-note">场景特点 · 摘要先行</div>
+        </div>
+    </div>
+
+    <!-- 常见说明 / FAQ 摘要 -->
+    <div class="faq-section" id="faq">
+        <h2>常见说明 · 摘要</h2>
+        <div class="faq-item">
+            <strong>这个页面是做什么的？</strong>
+            <p>它是一个轻量导航式介绍页，围绕 <a href="https://web-cns-pgsoft.com">pg电子</a> 提供结构化的说明与场景分类，没有冗余推销或诱导内容。</p>
+        </div>
+        <div class="faq-item">
+            <strong>为什么使用卡片和分区？</strong>
+            <p>为了让信息层次更清晰。浅灰背景、细边框与柔和阴影帮助视线快速区分不同模块，同时保持页面透气感。</p>
+        </div>
+        <div class="faq-item">
+            <strong>链接的使用方式是什么？</strong>
+            <p>链接均自然融入句子，不以按钮或命令式词汇呈现。例如“通过 pg电子 了解”这样的表述，避免硬广口吻。</p>
+        </div>
+        <div class="faq-item">
+            <strong>内容会频繁更新吗？</strong>
+            <p>本页为相对稳定的说明页，主要提供概括性信息。如果有必要调整，会以同样克制的风格进行补充。</p>
+        </div>
+    </div>
+
+    <!-- 底部 -->
+    <div class="footer">
+        <p>一份简洁的导航介绍 · 基于稳定与流畅的展示方式<br>
+        涉及链接：<a href="https://web-cns-pgsoft.com">pg电子</a> — 仅供信息参考</p>
+    </div>
+
+</div>
+</body>
+</html>
